@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="antteam_management">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="antteam_common-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/antteam_common/antteam_common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="antteam_management"/>
+        <property name="java-output-path" value="/antteam_management/target/classes"/>
+        <property name="component.exclusion.patterns" value="WEB-INF/web.xml"/>
+    </wb-module>
+</project-modules>
