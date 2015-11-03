@@ -33,5 +33,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="/antteam_common"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

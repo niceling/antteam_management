@@ -1,12 +1,13 @@
 jQuery(document).ready(function() {
 	$('#baseGird').datagrid({
-		url : 'queryList',
+		url : 'user/queryList',
 		pageSize : 20,
 		pageList : [10,20,30 ],
 		pagination : true,
 		fitColumns : true,
 		singleSelect : true,
 		toolbar : "#tb",
+		striped:true
 	});
 });
 
@@ -52,7 +53,7 @@ var add=function(dlgId){
            height: 540,
            modal:true,
            cache:false,
-           href: 'editPage',
+           href: 'addPage',
        });	
     $('#'+dlgId).show();
 }

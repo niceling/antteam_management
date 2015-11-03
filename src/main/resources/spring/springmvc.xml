@@ -23,6 +23,8 @@
 	 -->
 	 <mvc:resources location="/js/" mapping="/js/**"/>
 	 <mvc:resources location="/img/" mapping="/img/**"/>
+	 <mvc:resources location="/images/" mapping="/images/**"/>
+	 <mvc:resources location="/css/" mapping="/css/**"/>
 	 <mvc:resources location="/themes/" mapping="/themes/**"/>
 		
 	<!--注解映射器 -->
@@ -35,7 +37,40 @@
 	比如json转换解析器就默认加载了，如果使用mvc:annotation-driven不用配置上边的RequestMappingHandlerMapping和RequestMappingHandlerAdapter
 	实际开发时使用mvc:annotation-driven
 	 -->
+	 
+	 <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
+	 <bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+				<value>text/json;charset=UTF-8</value>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 采用SpringMVC自带的JSON转换工具，支持@ResponseBody注解 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJackson2HttpMessageConverter" />    <!-- JSON转换器 -->
+			</list>
+		</property>
+	</bean>
 	<mvc:annotation-driven>
+		<!-- 处理responseBody 里面日期类型 -->
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="dateFormat">
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
+							</bean>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</mvc:message-converters>
 	</mvc:annotation-driven>
 	
 	

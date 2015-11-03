@@ -1,0 +1,19 @@
+body{
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+.north {
+	height: 100px;
+	padding: 10px;
+	background:url("../images/hear_bg.jpg");
+}
+
+.west{
+	width:15%;
+	overflow:hidden;
+}
+
+.center{
+	
+}
