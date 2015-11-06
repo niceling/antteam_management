@@ -1140,10 +1140,10 @@ form {
 .form-horizontal .control-group:last-child {
 	border-bottom: 0;
 }
-.form-horizontal .control-label {
-	padding-top: 15px;
-	width: 180px;
-}
+/* .form-horizontal .control-label { */
+/* 	padding-top: 15px; */
+/* 	width: 180px; */
+/* } */
 .form-horizontal .controls {
 	margin-left: 200px;
 	padding: 10px 0;
@@ -1603,4 +1603,21 @@ div.dataTables_wrapper .ui-widget-header {
 /**追加的样式*/
 .btn{
 	margin-right: 10px;
+}
+.form-group{
+	margin-top: 5px;
+}
+.checkbox-inline{
+	display: inline-block;
+}
+
+.input-group{
+	margin-top: 5px;
+	width: 80%;
+	margin-left: 5px;
+}
+.pull-right-bottom{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 }

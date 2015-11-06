@@ -33,14 +33,13 @@ public class UserController {
 		return mv;
 	}
 	
-	
+	@ResponseBody
 	@RequestMapping(value="/queryList")
-	public @ResponseBody Map<Object,Object> queryItems(HttpServletRequest request,HttpServletResponse response,User user){
+	public Map<Object,Object> queryItems(HttpServletRequest request,HttpServletResponse response,PaginationBean<User> queryBean){
 		Map<Object,Object> map=new HashMap<Object, Object>();
 		try {
-			PaginationBean<User> paginationBean=new PaginationBean<User>(user, new Pagination(1));
-			List<User> numberList=userService.query(paginationBean);
-			int total=userService.count(paginationBean);
+			List<User> numberList=userService.query(queryBean);
+			int total=userService.count(queryBean);
 			map.put("total", total);//total代表一共有多少数据  
 	        map.put("rows", numberList);//row是代表显示的页的数据	
 		} catch (Exception e) {
@@ -70,6 +69,22 @@ public class UserController {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("user/editPage");
 		return mv;
+	}
+	@ResponseBody
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public boolean save(User user){
+		try {
+			if(user!=null && user.getId()!=null){
+				userService.updateByPrimaryKeySelective(user);
+			}else{
+				user.setPassword("123456");
+				userService.insertSelective(user);
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	

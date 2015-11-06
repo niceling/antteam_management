@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/matrix-style.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/matrix-media.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/matrix.js"></script>
 <title>用户列表</title>
 </head>
